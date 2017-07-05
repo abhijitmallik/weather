@@ -35,7 +35,8 @@
     "css-loader": "^0.23.1",
     "style-loader": "^0.13.0",
     "webpack": "2.2.1",
-    "axios" : "*"
+    "axios" : "*",
+    "redux-thunk" : "*"
   },
   "devDependencies": {
     "babel-core":"^6.18.2",
