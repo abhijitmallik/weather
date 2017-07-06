@@ -2,23 +2,35 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 
 class ViewChat extends Component{
+	constructor(props){
+		super(props);
+	}
 	render(){
 		if(!this.props.cityreducer){
 			return(<div>please enter city..</div>)
 		}
 		return(
-           this.props.cityreducer.map((chat)=>{
-              console.log("===chat data====",chat);
-           })
-		)
+		       <ul>
+		          {this.props.cityreducer.map(this.renderWeather)}
+		       </ul>
+		    )
 	}
-	renderChat(){
-
+	renderWeather(obj){
+		    const elem = [];
+			obj.list.map(temp=>{
+				elem.push(<li key={temp.dt_txt}><span>Date : {temp.dt_txt}</span><span> Temp : {temp.main.temp}</span></li>)
+	        })
+	        return elem;
 	}
 } 
 
 function bindPropsToAction(state){
-   return({'cityreducer':state.cityreducer});
+	if(state.cityreducer.length === 0){
+		return {'cityreducer':null};
+	}else{
+		return {'cityreducer':state.cityreducer};
+	}
+   
 }
 
 export default connect(bindPropsToAction)(ViewChat);
