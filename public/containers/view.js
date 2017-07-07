@@ -1,5 +1,7 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
+import '../app.css';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 class ViewChat extends Component{
 	constructor(props){
@@ -7,10 +9,10 @@ class ViewChat extends Component{
 	}
 	render(){
 		if(!this.props.cityreducer){
-			return(<div>please enter city..</div>)
+			return(<div></div>)
 		}
 		return(
-		       <ul>
+		       <ul className = "weather-report">
 		          {this.props.cityreducer.map(this.renderWeather)}
 		       </ul>
 		    )
@@ -18,9 +20,20 @@ class ViewChat extends Component{
 	renderWeather(obj){
 		    const elem = [];
 			obj.list.map(temp=>{
-				elem.push(<li key={temp.dt_txt}><span>Date : {temp.dt_txt}</span><span> Temp : {temp.main.temp}</span></li>)
+				elem.push(temp.main.temp)
 	        })
-	        return elem;
+	        return  (<div>
+		                <li className="spark-line-div">
+			                <Sparklines key={elem} height={120} width={180} data={elem}>
+			                   <SparklinesLine color="red" />
+			                </Sparklines>
+					    </li>
+					    <li className="spark-line-div">
+			                <Sparklines key={elem} height={120} width={180} data={elem}>
+			                   <SparklinesLine color="red" />
+			                </Sparklines>
+					    </li>
+				    </div>)
 	}
 } 
 

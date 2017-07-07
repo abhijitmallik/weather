@@ -37,7 +37,9 @@
     "webpack": "2.2.1",
     "axios" : "*",
     "redux-thunk" : "*",
-    "redux-promise":"*"
+    "redux-promise":"*",
+    "react-sparkline":"2.0.0",
+    "react-sparklines":"*"
   },
   "devDependencies": {
     "babel-core":"^6.18.2",

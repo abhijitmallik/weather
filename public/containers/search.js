@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { cityName } from '../actions/action';
 import { connect } from 'react-redux';
+import '../app.css';
 class Search extends Component{
 	constructor(props){
 		super(props);
@@ -10,7 +11,7 @@ class Search extends Component{
 		this.callWeatherData = this.callWeatherData.bind(this);
 	}
 	render(){
-		return(<div>Enter City<input type='text' value={this.state.value} onChange={(event) => {this.enterCity(event)}}/><button type="submit" value="Enter" onClick={()=>{this.callWeatherData()}}></button></div>);
+		return(<div><div className = 'city-name-div'>Enter City: <input type='text' value={this.state.value} onChange={(event) => {this.enterCity(event)}}/><div onClick={()=>{this.callWeatherData()}} className = 'button-style'>Ok</div></div></div>);
 	}
 	enterCity(event){
 		this.setState({'value':event.target.value});
