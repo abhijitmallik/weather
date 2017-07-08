@@ -2,6 +2,7 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import '../app.css';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
+import GoogleMap from '../component/googleMap';
 
 class ViewChat extends Component{
 	constructor(props){
@@ -27,7 +28,8 @@ class ViewChat extends Component{
 	        })
         	var comp =  <div key={obj.city.name} className = 'spark-line-div'>
         	            <span className = "city-name">{obj.city.name}</span>
-	                    <li className = 'spark-list'>
+	                    <ol className = 'spark-list'>
+                            <GoogleMap lat={obj.city.coord.lat} lon={obj.city.coord.lon}/>
 		                    <div className = "child-chart">
 				                <Sparklines  height={120} width={180} data={elem.temp}>
 				                   <SparklinesLine color="red" />
@@ -40,7 +42,7 @@ class ViewChat extends Component{
 				                </Sparklines>
 				                <span>Pressure</span>
 				            </div>   
-					    </li>
+					    </ol>
 				    </div>;
 	        return  (comp)
 	}
